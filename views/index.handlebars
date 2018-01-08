@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to Mongo Webscraper</h1>
+    <a href="/scrape"><button class="btn btn-warning" id="scrape">Scrape New Articles</button></a>
+    <a href="/viewSaved"><button class="btn btn-success" id="viewSaved">View Saved Articles</button></a>
+  </div>
+
+  {{#each articles}}
+    {{#unless saved}}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <a href="{{url}}" class="col-md-10"><h3>{{headline}}</h3></a>
+            <h5 class="col-md-10">{{byLine}}</h5>
+            <button class="btn btn-primary col-md-2" id="saveArticle" data-id="{{_id}}">Save Article</button>
+          </div>
+        </div>
+        <div class="panel-body">
+        <p class="pull-left clearfix">{{summary}}</p>
+        <a href="{{imgUrl}}"><img src="{{imgUrl}}" alt="" height="100" class="pull-right clearfix"></a>
+        </div>
+      </div>
+    {{/unless}}
+  {{/each}}
+</div>

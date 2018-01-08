@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Saved Articles</h1>
+    <a href="/"><button class="btn btn-primary">Home</button></a>
+  </div>
+  {{#each articles}}
+    {{#if saved}}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <a href="{{url}}" class="col-md-10"><h3>{{headline}}</h3></a>
+            <h5 class="col-md-10">{{byLine}}</h5>
+            <button class="btn btn-success col-md-2 addNote" data-id="{{_id}}">Add Note</button>
+            <button class="btn btn-danger col-md-2 delete" data-id="{{_id}}">Delete Article</button>
+          </div>
+        </div>
+        <div class="panel-body">
+        <p class="pull-left clearfix">{{summary}}</p>
+        <a href="{{imgUrl}}"><img src="{{imgUrl}}" alt="" height="100" class="pull-right clearfix"></a>
+        </div>
+      </div>
+    {{/if}}
+  {{/each}}
+  <div id="noteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <div id="noteArea"></div>
+          <input type="text" id="note" class="form-control">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="submitNote" data-dismiss="modal">Save Note</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
