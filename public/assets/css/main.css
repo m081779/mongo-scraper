@@ -1,0 +1,22 @@
+
+.note {
+  background: #ddd;
+  border: 1px solid black;
+  margin: 10px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+}
+.noteTitle {
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 0 10px;
+  line-height: 40px;
+}
+
+.deleteNote {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}

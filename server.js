@@ -9,7 +9,9 @@ const path = require('path');
 const app = express();
 
 //setting up the database
+
 const config = require('./config/database');
+mongoose.Promise = Promise;
 mongoose.connect(config.database, err =>{
   if (err){
     console.log('Connection failed!');
@@ -17,8 +19,7 @@ mongoose.connect(config.database, err =>{
     console.log('Connected to MongoDB...');
   }
 });
-let db = mongoose.connection;
-module.exports = db;
+
 
 //setting up Morgan middleware
 app.use(logger('dev'));
