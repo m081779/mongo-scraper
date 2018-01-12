@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "description": "A web scraping app that uses mongo for storage",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/m081779/mongo-scraper.git"
-  },
   "author": "Marco Principio",
   "license": "ISC",
   "bugs": {
