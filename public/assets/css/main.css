@@ -1,3 +1,5 @@
+
+/************************************* Global CSS *************************************/
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
@@ -21,9 +23,17 @@ a:active {
   outline-color: black;
 }
 
+
+
+
+/**************************** header CSS ****************************/
+
+
+
+
 .header {
   background-image: url('../img/nyt-header2.png');
-  background-color: black;
+  background-color: #181818;
   background-size: 40% 40%;
   background-repeat: no-repeat;
   background-position: center 35%;
@@ -31,6 +41,7 @@ a:active {
   width: 100%;
   height: var(--header-height);
   z-index: 100;
+  border-bottom: 5px solid rgba(255,255,255,0.2);
 }
 
 
@@ -69,33 +80,31 @@ a:active {
 	z-index: -2;
 	filter: blur(40px);
 	opacity: 0.5;
-	animation-name: pulse;
-	animation-iteration-count: infinite;
-	animation-duration: 60ms;
-	animation
 }
 
 .button-dark {
-  font-size: 2em;
-  padding: 5px 20px;
+  font-size: 2.2em;
+  padding: 0.7em 1.3em;
   font-weight: 600;
   border: none;
   background: black;
   color: #777;
   transition: all 300ms ease;
-  margin-right:1em;
-  margin: 1em;
-  position: absolute;
-  bottom: 0;
-
-}
-
-#viewSaved {
-  left: 13%;
+  margin: 1em 1em 1em 0.25em;
 }
 
 .button-dark:hover {
   transform: scale(1.1);
+}
+
+.button-group {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#viewSaved {
+  left: 11.5%;
 }
 
 .filler {
@@ -104,7 +113,13 @@ a:active {
 }
 
 
+
+
 /***************************** note modal CSS *****************************/
+
+
+
+
 .modal-content {
   background-image: url('../img/notepad-background.jpg');
   background-repeat: no-repeat;
@@ -115,10 +130,6 @@ a:active {
   font-family: 'Rock Salt', cursive;
   color: #777;
 
-}
-
-.modal-header {
-  /* background-image: url('../img/notepad-background.jsp'); */
 }
 
 .modal-body {
@@ -147,13 +158,10 @@ a:active {
   margin-right: 5em;
 }
 
-
 .note {
   background: transparent;
-  /* border: 1px solid #777; */
   margin-top: 5px;
   height: 3em;
-  /* line-height: 47px; */
   position: relative;
   cursor: pointer;
 }
@@ -161,48 +169,48 @@ a:active {
   display: inline-block;
   font-size: 2.5em;
   margin: 0;
-  /* line-height: 1px; */
 }
 
 .deleteNote {
-  /* position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%); */
   font-size: 2.5em;
   background: transparent;
   color: #777;
   border: none;
 }
 
+
+
+
 /************************ panel CSS ************************/
 
+
+
+
 .storyPanel {
-/* 	background: #777; */
 	background-image: url('../img/panel-background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: #ddd;
 	padding: 20px;
-	border-radius: 15px 0 15px 0;
+	border-radius: 20px 0 20px 0;
 	border: 3px solid #ddd;
 	position: relative;
   margin: 50px 20px;
   opacity: 0.9;
 }
 
-.storyImg {
-	float: right;
-  transition: transform 300ms ease;
-}
-
 .imgBox {
   overflow: hidden;
-
+  border: 3px solid #ddd;
 }
 
 .imgBox:hover .storyImg{
   transform: scale(1.1);
+}
+
+.storyImg {
+	float: right;
+  transition: transform 300ms ease;
 }
 
 .storyHeadline {
@@ -227,17 +235,19 @@ a:active {
 .storyButton {
   font-size: 2.5em;
   padding: 5px 30px;
-  border: 3px solid #777;
+  border: 3px solid #ddd;
+  background: #777;
   font-weight: 600;
-  color: #777;
+  color: #ddd;
   transition: all 300ms ease;
   margin-right:10px;
+  border-radius: 10px 0 10px 0;
 }
 
 .storyButton:hover {
-  color: #ddd;
-  background: #777;
-  border: 3px solid #ddd;
+  color: #777;
+  background: #ddd;
+  border: 3px solid #777;
 }
 
 .clearfix:after {
@@ -247,7 +257,15 @@ a:active {
 }
 
 
+
 /************************ neon title animation CSS ************************/
+
+
+#neon:before {
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  animation-duration: 60ms;
+}
 
 @keyframes pulse {
 	0% {
