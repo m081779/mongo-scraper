@@ -50,25 +50,23 @@ $(document).ready(function () {
       url: '/scrape/newArticles',
       type: 'GET',
       success: function (response) {
-        console.log('Response from scrape:',response)
         $('#numArticles').text(response.count);
-        $('#alertModal').modal('show');
       },
       error: function (error) {
         showErrorModal(error);
+      },
+      complete: function (result){
+        $('#alertModal').modal('show');
       }
     });
   });//end of #scrape click event
 
   $(document).on('click', '#saveArticle', function (e) {
-    // e.preventDefault();
-    console.log('firing inside click');
     let articleId = $(this).data('id');
     $.ajax({
       url: '/save/'+articleId,
       type: 'GET',
       success: function (response) {
-        console.log('firing inside success');
         window.location.href = '/';
       },
       error: function (error) {
@@ -156,6 +154,7 @@ $(document).ready(function () {
         $('#noteBodyEntry').val(note.body);
       },
       error: function (error) {
+        console.log(error)
         showErrorModal(error);
       }
     })
