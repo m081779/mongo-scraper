@@ -5,18 +5,20 @@ $(document).ready(function () {
     note.articleId = $(element).attr('data-id'),
     note.title = $('#noteTitleEntry').val().trim();
     note.body = $('#noteBodyEntry').val().trim();
-    $.ajax({
-      url: '/createNote',
-      type: 'POST',
-      data: note,
-      success: function (response){
-        showNote(response, note.articleId);
-        $('#noteBodyEntry, #noteTitleEntry').val('');
-      },
-      fail: function (error) {
-        showErrorModal(error);
-      }
-    });
+    if (note.title && note.body){
+      $.ajax({
+        url: '/createNote',
+        type: 'POST',
+        data: note,
+        success: function (response){
+          showNote(response, note.articleId);
+          $('#noteBodyEntry, #noteTitleEntry').val('');
+        },
+        fail: function (error) {
+          showErrorModal(error);
+        }
+      });
+    }
   }//end of sendNote function
 
   function showErrorModal(error) {
@@ -29,9 +31,9 @@ $(document).ready(function () {
       .addClass('noteTitle')
     let $deleteButton = $('<button>')
       .text('X')
-      .addClass('btn btn-danger deleteNote');
+      .addClass('deleteNote');
     let $note = $('<div>')
-      .append($title, $deleteButton)
+      .append($deleteButton, $title)
       .attr('data-note-id', element._id)
       .attr('data-article-id', articleId)
       .addClass('note')

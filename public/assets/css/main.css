@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Rock+Salt');
 
 :root {
   --header-height: 30em;
@@ -102,26 +103,76 @@ a:active {
   height: var(--header-height);
 }
 
+
+/***************************** note modal CSS *****************************/
+.modal-content {
+  background-image: url('../img/notepad-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-position: center 12%;
+  border-radius: 0;
+  font-family: 'Rock Salt', cursive;
+  color: #777;
+
+}
+
+.modal-header {
+  /* background-image: url('../img/notepad-background.jsp'); */
+}
+
+.modal-body {
+  padding-top: 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.noteInput {
+  width: 100%;
+  height: 2em;
+  background: transparent;
+  border: none;
+  font-size: 2em;
+  border-bottom: 2px solid #777;
+}
+
+#submitNote {
+  background: transparent;
+  border: 2px solid #777;
+  font-size: 2em;
+}
+
+.instructions {
+  display: inline-block;
+  margin-right: 5em;
+}
+
+
 .note {
-  background: #ddd;
-  border: 1px solid black;
-  margin: 10px;
-  height: 40px;
-  line-height: 40px;
+  background: transparent;
+  /* border: 1px solid #777; */
+  margin-top: 5px;
+  height: 3em;
+  /* line-height: 47px; */
   position: relative;
+  cursor: pointer;
 }
 .noteTitle {
   display: inline-block;
   font-size: 2.5em;
-  margin: 0 10px;
-  line-height: 40px;
+  margin: 0;
+  /* line-height: 1px; */
 }
 
 .deleteNote {
-  position: absolute;
-  right: 0;
+  /* position: absolute;
+  left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
+  font-size: 2.5em;
+  background: transparent;
+  color: #777;
+  border: none;
 }
 
 /************************ panel CSS ************************/
