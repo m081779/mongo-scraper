@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 const articleSchema = new Schema({
   headline: {
     type: String,
-    unique: 'Must have a unique headline, doofus'
+    unique: true
   },
   summary: String,
   storyUrl: String,

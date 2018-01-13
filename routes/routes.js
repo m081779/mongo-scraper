@@ -1,6 +1,4 @@
 const express = require('express');
-const cheerio = require('cheerio');
-const request = require('request');
 const router = express.Router();
 const db = require("../models");
 
@@ -12,28 +10,7 @@ router.get('/', (req,res) => {
     .catch(err=> res.json(err));
 });
 
-router.get("/scrape", function(req, res) {
-  let counter = 0;
-  request("https://www.nytimes.com/section/us", function(error, response, html) {
-    // let articleArr = [];
-    const $ = cheerio.load(html);
 
-    $("li article.story.theme-summary").each((i, element) => {
-      let article = new db.Article({
-        storyUrl: $(element).find('.story-body>.story-link').attr('href'),
-        headline: $(element).find('h2.headline').text().trim(),
-        summary: $(element).find('p.summary').text().trim(),
-        imgUrl: $(element).find('img').attr('src'),
-        byLine: $(element).find('p.byline').text().trim()
-      });
-
-      db.Article
-        .create(article)
-        .then(result => counter++)
-        .catch(err => console.log('++++++++++++++++++++++++++++++++++++',err));
-    });//end of each function
-  });//end of request to NY times
-});// end of get request to /scrape
 
 router.get('/save/:id', (req,res) => {
   db.Article
@@ -65,11 +42,9 @@ router.post('/createNote', function (req,res){
     title,
     body
   }
-  // console.log('note from createNote:', note);
   db.Note
     .create(note)
     .then( result => {
-      // console.log('result from creating a note:', result)
       db.Article
         .findOneAndUpdate({_id: articleId}, {$push:{notes: result._id}},{new:true})
         .then( data => res.json(result))
@@ -95,13 +70,9 @@ router.post('/deleteNote', (req,res)=>{
 });
 
 router.get('/getSingleNote/:id', function (req,res) {
-  // console.log('req.params.id from /getSingleNote:', req.params.id)
   db.Note
     .findOne({_id: req.params.id})
-    .then( result => {
-      // console.log('result from /getSingleNote:',result)
-      res.json(result)
-    })
+    .then( result => res.json(result))
     .catch(err => res.json(err));
 });
 

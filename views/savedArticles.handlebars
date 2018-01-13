@@ -1,46 +1,63 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Saved Articles</h1>
-    <a href="/"><button class="btn btn-primary">Home</button></a>
-  </div>
+  <header class="header">
+    <h1 id="neon">[ SAVED ARTICLES ]</h1>
+    <a href="/"><button class="button-dark">Home</button></a>
+  </header>
+  <div class="filler"></div>
+
+  {{!-- #each to iterate through articles and create article panels --}}
   {{#each articles}}
     {{#if saved}}
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row">
-            <a href="{{url}}" class="col-md-10"><h3>{{headline}}</h3></a>
-            <h5 class="col-md-10">{{byLine}}</h5>
-            <button class="btn btn-success col-md-2 addNote" data-id="{{_id}}">Add Note</button>
-            <button class="btn btn-danger col-md-2 delete" data-id="{{_id}}">Delete Article</button>
+      <figure class="storyPanel clearfix">
+        <a href="{{imgUrl}}" class="pull-right">
+          <div class="imgBox">
+            <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
           </div>
-        </div>
-        <div class="panel-body">
-        <p class="pull-left clearfix">{{summary}}</p>
-        <a href="{{imgUrl}}"><img src="{{imgUrl}}" alt="" height="100" class="pull-right clearfix"></a>
-        </div>
-      </div>
+        </a>
+        {{#if storyUrl}}
+          <a href="{{storyUrl}}" class="storyLink" target="_blank">
+            <h2 class="storyHeadline">{{headline}}</h2>
+          </a>
+        {{else}}
+          <h3 class="storyHeadline">{{headline}}</h3>
+        {{/if}}
+        <h5 class="storyByline">{{byLine}}</h5>
+        <h6 class="storySummary">{{summary}}</h6>
+        <button class="addNote storyButton" data-id="{{_id}}">Add Note</button>
+        <button class="deleteArticle storyButton" data-id="{{_id}}">Delete Article</button>
+      </figure>
     {{/if}}
   {{/each}}
+
+  {{!-- modal for displaying and creating notes --}}
   <div id="noteModal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
-
-      <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title text-center">Add a note</h4>
         </div>
         <div class="modal-body">
           <div id="noteArea"></div>
           <input type="text" class="form-control" id="noteTitleEntry" placeholder="Enter Title">
           <textarea type="text" id="noteBodyEntry" class="form-control" placeholder="Enter Body"></textarea>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" id="submitNote">Save Note</button>
         </div>
       </div>
-
     </div>
   </div>
-</div>
+
+  {{!-- error modal --}}
+  <div id="error" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <h2>There was an error processing your request.  Please try again later.</h2>
+        </div>
+      </div>
+    </div>
+  </div>

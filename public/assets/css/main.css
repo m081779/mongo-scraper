@@ -1,3 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+:root {
+  --header-height: 30em;
+}
+
+body {
+  background-image: url('../img/brick-background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 200%;
+  background-position: center center;
+  font-size: 62.5%;
+  font-family: arial;
+  margin: 0;
+  padding: 0;
+}
+
+a:active {
+  outline-color: black;
+}
+
+.header {
+  background-image: url('../img/nyt-header2.png');
+  background-color: black;
+  background-size: 40% 40%;
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;
+}
+
+
+#neon {
+  color: white;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, 20%);
+	font-size: 7em;
+	margin: 0;
+	padding: 0 20px;
+	font-family: 'Quicksand', sans-serif;
+	text-shadow: 0 0 20px #ff005b;
+}
+
+#neon:after {
+	content: '[ WEB-SCRAPER ]';
+	color: #ff005b;
+	position: absolute;
+	padding: 0 20px;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	filter: blur(15px);
+}
+
+#neon:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: #fe3a80;
+	z-index: -2;
+	filter: blur(40px);
+	opacity: 0.5;
+	animation-name: pulse;
+	animation-iteration-count: infinite;
+	animation-duration: 60ms;
+	animation
+}
+
+.button-dark {
+  font-size: 2em;
+  padding: 5px 20px;
+  font-weight: 600;
+  border: none;
+  background: black;
+  color: #777;
+  transition: all 300ms ease;
+  margin-right:1em;
+  margin: 1em;
+  position: absolute;
+  bottom: 0;
+
+}
+
+#viewSaved {
+  left: 13%;
+}
+
+.button-dark:hover {
+  transform: scale(1.1);
+}
+
+.filler {
+  width: 100%;
+  height: var(--header-height);
+}
 
 .note {
   background: #ddd;
@@ -19,4 +122,90 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/************************ panel CSS ************************/
+
+.storyPanel {
+/* 	background: #777; */
+	background-image: url('../img/panel-background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #ddd;
+	padding: 20px;
+	border-radius: 15px 0 15px 0;
+	border: 3px solid #ddd;
+	position: relative;
+  margin: 50px 20px;
+  opacity: 0.9;
+}
+
+.storyImg {
+	float: right;
+  transition: transform 300ms ease;
+}
+
+.imgBox {
+  overflow: hidden;
+
+}
+
+.imgBox:hover .storyImg{
+  transform: scale(1.1);
+}
+
+.storyHeadline {
+	font-size: 3.5em;
+	font-style: italic;
+  transition: color 300ms ease;
+}
+
+.storyHeadline:hover {
+	color: #777;
+}
+
+.storyPanel a {
+	text-decoration: none;
+	color: #ddd;
+}
+
+.storySummary {
+	font-size: 2.5em;
+}
+
+.storyButton {
+  font-size: 2.5em;
+  padding: 5px 30px;
+  border: 3px solid #777;
+  font-weight: 600;
+  color: #777;
+  transition: all 300ms ease;
+  margin-right:10px;
+}
+
+.storyButton:hover {
+  color: #ddd;
+  background: #777;
+  border: 3px solid #ddd;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/************************ neon title animation CSS ************************/
+
+@keyframes pulse {
+	0% {
+		filter: blur(30px);
+	}
+	50% {
+		filter: blur(40px);
+	}
+	100% {
+		filter: blur(30px);
+
 }

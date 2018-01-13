@@ -1,45 +1,57 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Welcome to Mongo Webscraper</h1>
-    <button class="btn btn-warning" id="scrape" data-toggle="modal" data-target="#alertModal">Scrape New Articles</button>
-    <a href="/viewSaved"><button class="btn btn-success" id="viewSaved">View Saved Articles</button></a>
+
+<header class="header">
+  <h1 id="neon">[ WEB-SCRAPER ]</h1>
+  <button class="button-dark" id="scrape" data-toggle="modal" data-target="#alertModal">Scrape New Articles</button>
+  <a href="/viewSaved"><button class="button-dark" id="viewSaved">View Saved Articles</button></a>
+</header>
+<div class="filler"></div>
+
+{{#each articles}}
+  {{#unless saved}}
+    <figure class="storyPanel clearfix">
+      <a href="{{imgUrl}}" class="pull-right">
+        <div class="imgBox">
+          <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
+        </div>
+      </a>
+      {{#if storyUrl}}
+        <a href="{{storyUrl}}" class="storyLink" target="_blank">
+          <h2 class="storyHeadline">{{headline}}</h2>
+        </a>
+      {{else}}
+        <h3 class="storyHeadline">{{headline}}</h3>
+      {{/if}}
+      <h5 class="storyByline">{{byLine}}</h5>
+      <h6 class="storySummary">{{summary}}</h6>
+      <button class="storyButton" id="saveArticle" data-id="{{_id}}">Save Article</button>
+    </figure>
+  {{/unless}}
+{{/each}}
+
+{{!-- Modal for alerting number of scraped articles --}}
+<div id="alertModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h2>You have scraped <span id="numArticles"></span> new articles</h2>
+      </div>
+    </div>
   </div>
+</div>
 
-  {{#each articles}}
-    {{#unless saved}}
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row">
-            <a href="{{storyUrl}}" class="col-md-10" target="_blank"><h3>{{headline}}</h3></a>
-            <button class="btn btn-primary col-md-2" id="saveArticle" data-id="{{_id}}">Save Article</button>
-            <div class="row">
-              <h5 class="col-md-12">{{byLine}}</h5>
-
-            </div>
-          </div>
-        </div>
-        <div class="panel-body row">
-          <p class="col-md-10">{{summary}}</p>
-          <a href="{{imgUrl}}" class="col-md-2"><img src="{{imgUrl}}" alt="" height="100" class=""></a>
-        </div>
+{{!-- error modal --}}
+<div id="error" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-    {{/unless}}
-  {{/each}}
-
-  <div id="alertModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-md">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-        </div>
-        <div class="modal-body">
-          <h2>You have scraped <span id="numArticles"></span> new articles</h2>
-        </div>
+      <div class="modal-body">
+        <h2>There was an error processing your request.  Please try again later.</h2>
       </div>
-
     </div>
   </div>
 </div>
