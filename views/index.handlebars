@@ -11,7 +11,7 @@
 {{#each articles}}
   {{#unless saved}}
     <figure class="storyPanel clearfix">
-      <a href="{{imgUrl}}" class="pull-right">
+      <a href="{{storyUrl}}" class="pull-right">
         <div class="imgBox">
           <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
         </div>
@@ -46,7 +46,7 @@
 
 {{!-- error modal --}}
 <div id="error" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>

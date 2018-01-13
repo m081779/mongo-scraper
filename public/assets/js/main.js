@@ -14,7 +14,7 @@ $(document).ready(function () {
           showNote(response, note.articleId);
           $('#noteBodyEntry, #noteTitleEntry').val('');
         },
-        fail: function (error) {
+        error: function (error) {
           showErrorModal(error);
         }
       });
@@ -54,7 +54,7 @@ $(document).ready(function () {
         $('#numArticles').text(response.count);
         $('#alertModal').modal('show');
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     });
@@ -71,7 +71,7 @@ $(document).ready(function () {
         console.log('firing inside success');
         window.location.href = '/';
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     });
@@ -91,7 +91,7 @@ $(document).ready(function () {
         });
         $('#noteModal').modal('show');
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     });
@@ -118,7 +118,7 @@ $(document).ready(function () {
       success: function (response) {
         window.location.href = '/viewSaved'
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     })
@@ -139,7 +139,7 @@ $(document).ready(function () {
       success: function (response) {
         thisItem.parent().remove();
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     });
@@ -155,7 +155,7 @@ $(document).ready(function () {
         $('#noteTitleEntry').val(note.title);
         $('#noteBodyEntry').val(note.body);
       },
-      fail: function (error) {
+      error: function (error) {
         showErrorModal(error);
       }
     })
