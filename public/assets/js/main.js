@@ -7,7 +7,7 @@ $(document).ready(function () {
     note.body = $('#noteBodyEntry').val().trim();
     if (note.title && note.body){
       $.ajax({
-        url: '/createNote',
+        url: '/notes/createNote',
         type: 'POST',
         data: note,
         success: function (response){
@@ -64,7 +64,7 @@ $(document).ready(function () {
   $(document).on('click', '#saveArticle', function (e) {
     let articleId = $(this).data('id');
     $.ajax({
-      url: '/save/'+articleId,
+      url: '/articles/save/'+articleId,
       type: 'GET',
       success: function (response) {
         window.location.href = '/';
@@ -81,7 +81,7 @@ $(document).ready(function () {
     let id = $(this).data('id');
     $('#submitNote, #noteBodyEntry').attr('data-id', id)
     $.ajax({
-      url: '/getNotes/'+id,
+      url: '/notes/getNotes/'+id,
       type: 'GET',
       success: function (data){
         $.each(data.notes, function (i, item){
@@ -111,10 +111,10 @@ $(document).ready(function () {
     e.preventDefault();
     let id = $(this).data('id');
     $.ajax({
-      url: '/deleteArticle/'+id,
+      url: '/articles/deleteArticle/'+id,
       type: 'GET',
       success: function (response) {
-        window.location.href = '/viewSaved'
+        window.location.href = '/articles/viewSaved'
       },
       error: function (error) {
         showErrorModal(error);
@@ -131,7 +131,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-      url: '/deleteNote',
+      url: '/notes/deleteNote',
       type: 'POST',
       data: ids,
       success: function (response) {
@@ -147,7 +147,7 @@ $(document).ready(function () {
     e.stopPropagation();
     let id = $(this).data('note-id');
     $.ajax({
-      url: '/getSingleNote/'+id,
+      url: '/notes/getSingleNote/'+id,
       type: 'GET',
       success: function (note) {
         $('#noteTitleEntry').val(note.title);

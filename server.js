@@ -7,6 +7,7 @@ const logger = require('morgan');
 const path = require('path');
 const favicon = require('serve-favicon');
 
+
 //initializing the app
 const app = express();
 
@@ -26,9 +27,6 @@ app.use(favicon(path.join(__dirname, 'public', 'assets/img/favicon.ico')))
 //setting up Morgan middleware
 app.use(logger('dev'));
 
-//setting up the static directory
-app.use(express.static(path.join(__dirname, '/public')));
-
 //setting up body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -37,10 +35,21 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+//setting up the static directory
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/articles',express.static(path.join(__dirname, 'public')));
+app.use('/notes',express.static(path.join(__dirname, 'public')));
+
+
 //setting up routes
-const routes = require('./routes/routes')
+const index = require('./routes/index')
+const articles = require('./routes/articles')
+const notes = require('./routes/notes')
 const scrape = require('./routes/scrape')
-app.use('/', routes);
+
+app.use('/', index)
+app.use('/articles', articles);
+app.use('/notes', notes);
 app.use('/scrape', scrape);
 
 //starting server
