@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   //function to display error modal on ajax error
   function showErrorModal(error) {
-    $('#error').modal('show')
+    $('#error').modal('show');
   }
 
 
@@ -33,7 +33,7 @@ $(document).ready(function () {
   function showNote(element, articleId){
     let $title = $('<p>')
       .text(element.title)
-      .addClass('noteTitle')
+      .addClass('noteTitle');
     let $deleteButton = $('<button>')
       .text('X')
       .addClass('deleteNote');
@@ -42,7 +42,7 @@ $(document).ready(function () {
       .attr('data-note-id', element._id)
       .attr('data-article-id', articleId)
       .addClass('note')
-      .appendTo('#noteArea')
+      .appendTo('#noteArea');
   }//end of showNote function
 
   //event listener to reload root when user closes modal showing
@@ -89,13 +89,13 @@ $(document).ready(function () {
     $('#noteArea').empty();
     $('#noteTitleEntry, #noteBodyEntry').val('');
     let id = $(this).data('id');
-    $('#submitNote, #noteBodyEntry').attr('data-id', id)
+    $('#submitNote, #noteBodyEntry').attr('data-id', id);
     $.ajax({
       url: '/notes/getNotes/'+id,
       type: 'GET',
       success: function (data){
         $.each(data.notes, function (i, item){
-          showNote(item, id)
+          showNote(item, id);
         });
         $('#noteModal').modal('show');
       },
@@ -113,7 +113,7 @@ $(document).ready(function () {
 
   //keypress event to allow user to submit note with enter key
   $('#noteBodyEntry').on('keypress', function (e) {
-    if(e.keyCode == 13){
+    if(e.keyCode === 13){
       sendNote($(this));
     }
   });//end of #noteBodyEntry keypress(enter) event
@@ -126,12 +126,12 @@ $(document).ready(function () {
       url: '/articles/deleteArticle/'+id,
       type: 'DELETE',
       success: function (response) {
-        window.location.href = '/articles/viewSaved'
+        window.location.href = '/articles/viewSaved';
       },
       error: function (error) {
         showErrorModal(error);
       }
-    })
+    });
   });//end of .deleteArticle click event
 
   //click event to delete a note from a saved article
@@ -141,7 +141,7 @@ $(document).ready(function () {
     let ids= {
       noteId: $(this).parent().data('note-id'),
       articleId: $(this).parent().data('article-id')
-    }
+    };
 
     $.ajax({
       url: '/notes/deleteNote',
@@ -169,10 +169,10 @@ $(document).ready(function () {
         $('#noteBodyEntry').val(note.body);
       },
       error: function (error) {
-        console.log(error)
+        console.log(error);
         showErrorModal(error);
       }
-    })
-  })//end of .note click event
+    });
+  }); //end of .note click event
 
 });//end of document ready function

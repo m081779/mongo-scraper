@@ -1,7 +1,7 @@
 //Dependencies
-const express = require('express');
-const router = express.Router();
-const db = require("../models");
+const express = require('express'),
+      router = express.Router(),
+      db = require("../models");
 
 //get route to update 'saved' boolean to true
 router.get('/save/:id', (req,res) => {

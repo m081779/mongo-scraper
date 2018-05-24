@@ -1,7 +1,7 @@
 //Dependencies
-const express = require('express');
-const router = express.Router();
-const db = require("../models");
+const express = require('express'),
+      router = express.Router(),
+      db = require("../models");
 
 //get route to root, populating index.handlebars with articles
 router.get('/', (req,res) => {

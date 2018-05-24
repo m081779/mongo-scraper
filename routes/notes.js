@@ -1,7 +1,7 @@
 //Dependencies
-const express = require('express');
-const router = express.Router();
-const db = require("../models");
+const express = require('express'),
+      router = express.Router(),
+      db = require("../models");
 
 //get route to retrieve all notes for a particlular article
 router.get('/getNotes/:id', function (req,res){
@@ -26,7 +26,7 @@ router.post('/createNote', function (req,res){
   let note = {
     title,
     body
-  }
+  };
   db.Note
     .create(note)
     .then( result => {
@@ -40,7 +40,7 @@ router.post('/createNote', function (req,res){
 
 //post route to delete a note
 router.post('/deleteNote', (req,res)=>{
-  let {articleId, noteId} = req.body
+  let {articleId, noteId} = req.body;
   db.Note
     .remove({_id: noteId})
     .then(result => res.json(result))

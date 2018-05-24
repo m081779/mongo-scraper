@@ -1,9 +1,9 @@
 //Dependencies
-const express = require('express');
-const cheerio = require('cheerio');
-const rp = require('request-promise');
-const router = express.Router();
-const db = require('../models');
+const express = require('express'),
+      cheerio = require('cheerio'),
+      rp = require('request-promise'),
+      router = express.Router(),
+      db = require('../models');
 
 //route to scrape new articles
 router.get("/newArticles", function(req, res) {
@@ -19,7 +19,7 @@ router.get("/newArticles", function(req, res) {
     .find({})
     .then((savedArticles) => {
       //creating an array of saved article headlines
-      let savedHeadlines = savedArticles.map(article => article.headline)
+      let savedHeadlines = savedArticles.map(article => article.headline);
 
         //calling request promist with options object
         rp(options)
@@ -50,9 +50,9 @@ router.get("/newArticles", function(req, res) {
             .then(result => res.json({count: newArticleArr.length}))//returning count of new articles to front end
             .catch(err => {});
         })
-        .catch(err => console.log(err))//end of rp method
+        .catch(err => console.log(err)); //end of rp method
     })
-    .catch(err => console.log(err))//end of db.Article.find()
+    .catch(err => console.log(err)); //end of db.Article.find()
 });// end of get request to /scrape
 
 module.exports = router;
