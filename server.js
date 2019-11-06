@@ -15,7 +15,10 @@ const app = express();
 const config = require('./config/database');
 mongoose.Promise = Promise;
 mongoose
-  .connect(config.database)
+  .connect(config.database, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then( result => {
     console.log(`Connected to database '${result.connections[0].name}' on ${result.connections[0].host}:${result.connections[0].port}`);
   })
