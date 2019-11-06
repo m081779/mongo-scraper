@@ -26,13 +26,14 @@ router.get("/newArticles", function(req, res) {
         .then(function ($) {
           let newArticleArr = [];
           //iterating over returned articles, and creating a newArticle object from the data
-          $('#latest-panel article.story.theme-summary').each((i, element) => {
+          $('#stream-panel li ').each((i, element) => {
+
             let newArticle = new db.Article({
-              storyUrl: $(element).find('.story-body>.story-link').attr('href'),
-              headline: $(element).find('h2.headline').text().trim(),
-              summary : $(element).find('p.summary').text().trim(),
+              storyUrl: $(element).find('a').attr('href'),
+              headline: $(element).find('h2').text().trim(),
+              summary : $(element).find('p').text().trim(),
               imgUrl  : $(element).find('img').attr('src'),
-              byLine  : $(element).find('p.byline').text().trim()
+              byLine  : $(element).find('span').text().trim()
             });
             //checking to make sure newArticle contains a storyUrl
             if (newArticle.storyUrl) {
