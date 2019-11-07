@@ -53,6 +53,7 @@ $(document).ready(function () {
 
   //click event to scrape new articles
   $('#scrape').on('click', function (e){
+    $('#loader').css({ 'display': 'block' });
     e.preventDefault();
     $.ajax({
       url: '/scrape/newArticles',
@@ -64,6 +65,7 @@ $(document).ready(function () {
         showErrorModal(error);
       },
       complete: function (result){
+        $('#loader').css({ 'display': 'none' });
         $('#alertModal').modal('show');
       }
     });
