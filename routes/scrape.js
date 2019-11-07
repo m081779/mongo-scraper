@@ -26,7 +26,7 @@ router.get("/newArticles", function(req, res) {
         .then(function ($) {
           let newArticleArr = [];
           //iterating over returned articles, and creating a newArticle object from the data
-          $('#stream-panel li ').each((i, element) => {
+          $('#stream-panel li').each((i, element) => {
             let newArticle = new db.Article({
               storyUrl: `https://www.nytimes.com${$(element).find('a').attr('href')}`,
               headline: $(element).find('h2').text().trim(),
