@@ -1,0 +1,85 @@
+.header {
+    background-image: url('../../img/nyt-header.png');
+    background-color: #181818;
+    background-size: 40% 40%;
+    background-repeat: no-repeat;
+    background-position: center 35%;
+    position: fixed;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 100;
+    border-bottom: 5px solid rgba(255,255,255,0.2);
+  }
+  
+  
+  #neon {
+    color: white;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, 20%);
+              transform: translate(-50%, 20%);
+      font-size: 7em;
+      margin: 0;
+      padding: 0 20px;
+      font-family: 'Quicksand', sans-serif;
+      text-shadow: 0 0 20px #ff005b;
+  }
+  
+  #neon:after {
+      content: '[ WEB-SCRAPER ]';
+      color: #ff005b;
+      position: absolute;
+      padding: 0 20px;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      -webkit-filter: blur(15px);
+              filter: blur(15px);
+  }
+  
+  #neon:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #fe3a80;
+      z-index: -2;
+      -webkit-filter: blur(40px);
+              filter: blur(40px);
+      opacity: 0.5;
+  }
+  
+  .button-dark {
+    font-size: 2.2em;
+    padding: 0.7em 1.3em;
+    font-weight: 600;
+    border: none;
+    background: black;
+    color: #777;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+    margin: 1em 1em 1em 0.25em;
+  }
+  
+  .button-dark:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  
+  .button-group {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  #viewSaved {
+    left: 11.5%;
+  }
+  
+  .filler {
+    width: 100%;
+    height: var(--header-height);
+  }

@@ -1,0 +1,40 @@
+#neon:before {
+    -webkit-animation-name: pulse;
+            animation-name: pulse;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-duration: 60ms;
+            animation-duration: 60ms;
+  }
+  
+  @-webkit-keyframes pulse {
+      0% {
+          -webkit-filter: blur(30px);
+                  filter: blur(30px);
+      }
+      50% {
+          -webkit-filter: blur(40px);
+                  filter: blur(40px);
+      }
+      100% {
+          -webkit-filter: blur(30px);
+                  filter: blur(30px);
+  
+  }
+  }
+  
+  @keyframes pulse {
+      0% {
+          -webkit-filter: blur(30px);
+                  filter: blur(30px);
+      }
+      50% {
+          -webkit-filter: blur(40px);
+                  filter: blur(40px);
+      }
+      100% {
+          -webkit-filter: blur(30px);
+                  filter: blur(30px);
+  
+  }
+  }
